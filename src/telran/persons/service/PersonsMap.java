@@ -12,14 +12,13 @@ public class PersonsMap implements IPersons {
 	}
 	@Override
 	public boolean addPerson(Person person) {
-		if (persons.containsKey(person.getId()))
+		if (person == null)
 			return false;
-		persons.put(person.getId(), person);
-		return true;
+		return persons.putIfAbsent(person.getId(), person) == null;
 	}
 	@Override
 	public boolean removePerson(int id) {
-		return persons.remove(id) == null ? false : true;
+		return persons.remove(id) != null;
 	}
 	@Override
 	public List<Person> getAllPersons() {

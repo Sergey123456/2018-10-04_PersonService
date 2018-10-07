@@ -8,16 +8,15 @@ public class PersonsMap implements IPersons {
 	private Map<Integer, Person> persons;
 	
 	public PersonsMap() {
-		super();
 		persons = new HashMap<>();
 	}
-
 	@Override
 	public boolean addPerson(Person person) {
+		if (persons.containsKey(person.getId()))
+			return false;
 		persons.put(person.getId(), person);
 		return true;
 	}
-
 	@Override
 	public boolean removePerson(int id) {
 		return persons.remove(id) == null ? false : true;
@@ -27,7 +26,6 @@ public class PersonsMap implements IPersons {
 		List<Person> list = new ArrayList<>(persons.values());
 		return list;
 	}
-	
 	public static void main(String[] args) {
 		PersonsMap personsMap = new PersonsMap();
 		Person person1 = new Person(111, "11-11-11", "Sergey", 	

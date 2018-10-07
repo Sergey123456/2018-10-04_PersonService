@@ -16,7 +16,6 @@ class PersonsMapTest {
 	PersonsMap persons3Original;
 	PersonsMap personsEmpty;
 	List<Person> expected;
-	
 	@BeforeEach
 	void setUp() throws Exception {
 		persons3Original 	= new PersonsMap();
@@ -32,7 +31,6 @@ class PersonsMapTest {
 		persons3Original.addPerson(person2);
 		persons3Original.addPerson(person3);
 	}
-
 	@Test
 	void addPersonTest() {
 		// Add first element to empty PersonsMap 
@@ -52,7 +50,6 @@ class PersonsMapTest {
 		expected.sort((o1, o2) -> o1.getId() > o2.getId() ? 1 : -1);
 		assertEquals(expected, personsEmptyAr);
 	}
-	
 	@Test
 	public void removeTest() {
 		// delete nonexistents elements
@@ -73,20 +70,19 @@ class PersonsMapTest {
 	
 	@Test
 	public void getAllPersonsTest() {
-		List<Person> exeption 	= new ArrayList<>();
-		List<Person> actual 	= new ArrayList<>();
+		List<Person> expected 	= new ArrayList<>();
+		List<Person> actual 	= persons3Original.getAllPersons();
 		Person person1 = new Person(111, "11-11-11", "Sergey", 	
 				new Address("Vladimir", "Lenina", 			34, 25));
 		Person person2 = new Person(222, "22-22-22", "Andrew", 	
 				new Address("Moscow", 	"Pobedy", 			75, 67));
 		Person person3 = new Person(333, "33-33-33", "Ilia", 	
 				new Address("Ivanovo", 	"Krasnoarmeiskaia", 12, 75));
-		exeption.add(person1);
-		exeption.add(person2);
-		exeption.add(person3);
-		exeption.sort((o1, o2) -> o1.getId() > o2.getId() ? 1 : -1);
+		expected.add(person1);
+		expected.add(person2);
+		expected.add(person3);
+		expected.sort((o1, o2) -> o1.getId() > o2.getId() ? 1 : -1);
 		actual.sort((o1, o2) -> o1.getId() > o2.getId() ? 1 : -1);
 		assertEquals(expected, actual);
 	}
-
 }
